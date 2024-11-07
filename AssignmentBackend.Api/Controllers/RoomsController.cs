@@ -1,6 +1,6 @@
-using AssigmentBackend.Business;
 using AssigmentBackend.Business.DTOs;
 using AssigmentBackend.Business.Filters;
+using AssigmentBackend.Business.Interfaces;
 using AssigmentBackend.Model;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,11 +10,11 @@ namespace AssignmentBackend.Api.Controllers
     [Route("[controller]")]
     public class RoomsController : ControllerBase
     {
-        private readonly RoomGetService _roomGetService;
+        private readonly IRoomGetService _roomGetService;
 
-        public RoomsController()
+        public RoomsController(IRoomGetService roomGetService)
         {
-            _roomGetService = new RoomGetService();
+            _roomGetService = roomGetService;
         }
 
         [HttpGet("{id}")]
